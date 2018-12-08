@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\StudentRepositoryInterface;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    private $studentRepo = null;
+    public function __construct(StudentRepositoryInterface $studentRepo)
+    {
+        $this->studentRepo = $studentRepo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = $this->studentRepo->listStudents();
+
+        return view("students.index", compact('students'));
     }
 
     /**

@@ -150,6 +150,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Jsdecena\Baserepo\BaseRepositoryProvider::class,
+        \App\Providers\RepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...
